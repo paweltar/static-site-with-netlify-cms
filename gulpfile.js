@@ -22,6 +22,8 @@ var cssnext = require('postcss-cssnext');
 var nipponColor = require('postcss-nippon-color');
 var rucksack = require('gulp-rucksack');
 var fontMagician = require('postcss-font-magician');
+var instaFilters = require('postcss-instagram');
+var lost = require('lost');
 
 var devBuild = (process.env.NODE_ENV !== 'production');
 
@@ -92,6 +94,8 @@ gulp.task('css', ['images', 'fonts'], function() {
       hosted: [folder.src + 'fonts']
     }),
     nipponColor,
+    instaFilters,
+    lost(),
     rucksack,
     mqpacker,
     cssnext({ browsers: ['last 2 versions', '> 2%'] })
