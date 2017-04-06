@@ -127,7 +127,12 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest(folder.build + 'fonts'))
 });
 
-gulp.task('run', ['html', 'css', 'js', 'fonts']);
+gulp.task('static', function() {
+  return gulp.src(folder.src + 'static/**/*')
+  .pipe(gulp.dest(folder.build))
+});
+
+gulp.task('run', ['html', 'css', 'js', 'fonts', 'static']);
 
 gulp.task('watch', function() {
   gulp.watch(folder.src + 'images/**/*', ['images']);
@@ -138,6 +143,7 @@ gulp.task('watch', function() {
   gulp.watch(folder.src + 'js/**/*', ['js']);
   gulp.watch(folder.src + 'scss/**/*', ['css']);
   gulp.watch(folder.src + 'fonts/**/*', ['fonts']);
+  gulp.watch(folder.src + 'static/**/*', ['static']);
 });
 
 gulp.task('default', function() {
