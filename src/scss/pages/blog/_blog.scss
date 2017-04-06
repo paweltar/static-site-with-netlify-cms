@@ -1,12 +1,13 @@
 .top-navigation {
   padding: 20px;
   border-bottom: 2px solid $color-primary;
+  margin-bottom: 40px;
 }
 
 @mixin page-section {
   border: 2px solid $color-primary;
   padding: 20px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 article {
@@ -19,4 +20,8 @@ article {
 
 .archive {
   @include page-section;
+}
+
+.blog-contents {
+
 }
