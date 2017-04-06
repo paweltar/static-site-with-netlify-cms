@@ -51,7 +51,7 @@ body {
     }
 }
 
-p {
+p, h1, span {
     margin: 0;
     color: $color-primary;
     text-shadow: 0 0 1px #fff, 0 0 0 #fff, 0 0 20px $color-primary, 0 0 30px $color-primary, 0 0 40px $color-primary, 0 0 55px $color-primary, 0 0 75px $color-primary;

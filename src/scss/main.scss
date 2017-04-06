@@ -1,5 +1,7 @@
-@import "settings.scss";
+@import "settings";
 @import "old-screen-effect";
+@import "pages/blog/blog-grid";
+@import "pages/blog/blog";
 
 .text-container {
   lost-column: 3/4;

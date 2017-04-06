@@ -1,0 +1,22 @@
+.top-navigation {
+  padding: 20px;
+  border-bottom: 2px solid $color-primary;
+}
+
+@mixin page-section {
+  border: 2px solid $color-primary;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+article {
+  @include page-section;
+}
+
+.tags-cloud {
+  @include page-section;
+}
+
+.archive {
+  @include page-section;
+}
