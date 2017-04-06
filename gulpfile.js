@@ -23,6 +23,7 @@ var nipponColor = require('postcss-nippon-color');
 var rucksack = require('gulp-rucksack');
 var fontMagician = require('postcss-font-magician');
 var lost = require('lost');
+var markdown = require('gulp-markdown');
 
 var devBuild = (process.env.NODE_ENV !== 'production');
 
@@ -42,7 +43,7 @@ gulp.task('images', function() {
     return gulp.src(folder.src + 'images/**/*').pipe(newer(out)).pipe(imagemin({optimizationLevel: 5})).pipe(gulp.dest(out));
 });
 
-gulp.task('html', ['images'], function() {
+gulp.task('html', ['images', 'markdown'], function() {
     var out = folder.build + '/';
 
     var page = gulp.src(folder.src + 'html/pages/**/*.html').pipe(panini({
@@ -131,6 +132,12 @@ gulp.task('static', function() {
   return gulp.src(folder.src + 'static/**/*')
   .pipe(gulp.dest(folder.build))
 });
+
+gulp.task('markdown', function() {
+  return gulp.src(folder.src + 'posts/**/*.md')
+  .pipe(markdown())
+  .pipe(gulp.dest(folder.src + 'html/pages/posts'))
+})
 
 gulp.task('run', ['html', 'css', 'js', 'fonts', 'static']);
 
