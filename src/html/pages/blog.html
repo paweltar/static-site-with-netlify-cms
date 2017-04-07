@@ -14,38 +14,18 @@
       </div>
     </aside>
     <div class="blog-contents">
-      <article>
-        <h1 class="article__title">Article Title</h1>
-        <p class="article__date">06-03-2017</p>
-        <br>
-        <p class="article__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Id alias beatae quidem, saepe amet aliquam officia odit, minus laudantium similique, error magnam aspernatur maxime delectus architecto nobis quae.</p>
-        <hr class="divider">
-        <div class="article__footer">
-          <a href="/posts/article-test.html" class="highlighted">Czytaj</a>
-        </div>
-      </article>
-
-      <article>
-        <h1 class="article__title">Article Title</h1>
-        <p class="article__date">06-03-2017</p>
-        <br>
-        <p class="article__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Id alias beatae quidem, saepe amet aliquam officia odit, minus laudantium similique, error magnam aspernatur maxime delectus architecto nobis quae.</p>
-        <hr class="divider">
-        <div class="article__footer">
-          <a href="/blog.html" class="highlighted">Czytaj</a>
-        </div>
-      </article>
-
-      <article>
-        <h1 class="article__title">Article Title</h1>
-        <p class="article__date">06-03-2017</p>
-        <br>
-        <p class="article__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Id alias beatae quidem, saepe amet aliquam officia odit, minus laudantium similique, error magnam aspernatur maxime delectus architecto nobis quae.</p>
-        <hr class="divider">
-        <div class="article__footer">
-          <a href="/blog.html" class="highlighted">Czytaj</a>
-        </div>
-      </article>
+      {{#each posts}}
+        <article>
+          <h1 class="article__title">{{ this.title }}</h1>
+          <p class="article__date">{{ this.date }}</p>
+          <br>
+          {{{this.body}}}
+          <hr class="divider">
+          <div class="article__footer">
+            <a href="/posts/article-test.html" class="highlighted">Czytaj</a>
+          </div>
+        </article>
+      {{/each}}
     </div>
   </div>
 </section>
