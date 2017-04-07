@@ -27,12 +27,17 @@ var markdownToJSON = require('gulp-markdown-to-json');
 var gutil = require('gulp-util');
 var marked = require('marked');
 
+
 var devBuild = (process.env.NODE_ENV !== 'production');
 
 var folder = {
     src: 'src/',
     build: 'build/'
 };
+
+marked.setOptions({
+  smartypants: true
+});
 
 gulp.task('serve', ['css'], function() {
     browserSync.init({
@@ -135,12 +140,18 @@ gulp.task('static', function() {
   .pipe(gulp.dest(folder.build))
 });
 
-gulp.task('save-posts-data', function() {
+gulp.task('save-posts-data', ['convert-to-html'], function() {
   return gulp.src(folder.src + 'posts/**/*.md')
   .pipe(gutil.buffer())
   .pipe(markdownToJSON(marked, 'posts.json'))
   .pipe(gulp.dest(folder.src + 'data'))
 });
+
+gulp.task('convert-to-html', function() {
+  return gulp.src(folder.src + 'posts/**/*.md')
+
+  .pipe(gulp.dest(folder.src + 'html/pages/posts'))
+})
 
 gulp.task('run', ['html', 'css', 'js', 'fonts', 'static']);
 
