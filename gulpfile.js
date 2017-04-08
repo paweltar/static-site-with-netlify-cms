@@ -26,6 +26,9 @@ var lost = require('lost');
 var markdownToJSON = require('gulp-markdown-to-json');
 var gutil = require('gulp-util');
 var marked = require('marked');
+var rename = require("gulp-rename");
+var remark = require("gulp-remark");
+var remarkHtml = require("remark-html");
 
 
 var devBuild = (process.env.NODE_ENV !== 'production');
@@ -143,13 +146,20 @@ gulp.task('static', function() {
 gulp.task('save-posts-data', ['convert-to-html'], function() {
   return gulp.src(folder.src + 'posts/**/*.md')
   .pipe(gutil.buffer())
-  .pipe(markdownToJSON(marked, 'posts.json'))
+  .pipe(markdownToJSON(marked, 'posts.json', (data, file) => {
+    delete data.body;
+    data.path = file.path;
+    return data;
+  }))
   .pipe(gulp.dest(folder.src + 'data'))
 });
 
 gulp.task('convert-to-html', function() {
   return gulp.src(folder.src + 'posts/**/*.md')
-
+  .pipe(remark().use(remarkHtml))
+  .pipe(rename({
+    extname: ".html"
+  }))
   .pipe(gulp.dest(folder.src + 'html/pages/posts'))
 })
 
