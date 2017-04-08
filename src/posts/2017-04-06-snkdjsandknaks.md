@@ -1,8 +1,8 @@
 ---
 layout: blog-layout
 title: My test post from CMS
-date: 2017-04-06T15:21:41.201Z
 description: Opis opis opis pierwszy
+date: 2017-04-06T15:21:41.201Z
 rating: '4'
 ---
 
