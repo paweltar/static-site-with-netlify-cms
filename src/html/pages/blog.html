@@ -1,31 +1,12 @@
-<nav class="top-navigation">
-  <a href="/" class="highlighted">Strona Główna</a>
-</nav>
-<section class="container">
-  <div class="row--blog">
-    <aside class="aside-navigation">
-      <div class="tags-cloud">
-        <span>technologia</span>
-        <span>historia</span>
-        <span>sztuka</span>
-      </div>
-      <div class="archive">
-        <p>kwiecień (3)</p>
-      </div>
-    </aside>
-    <div class="blog-contents">
-      {{#each posts}}
-        <article>
-          <h1 class="article__title">{{ this.title }}</h1>
-          <p class="article__date">{{ this.date }}</p>
-          <br>
-          <p class="article__description">{{{this.description}}}</p>
-          <hr class="divider">
-          <div class="article__footer">
-            <a href="/posts/{{this}}" class="highlighted">Czytaj</a>
-          </div>
-        </article>
-      {{/each}}
+{{#each posts}}
+  <article>
+    <h1 class="article__title">{{ this.title }}</h1>
+    <p class="article__date">{{ this.date }}</p>
+    <br>
+    <p class="article__description">{{{this.description}}}</p>
+    <hr class="divider">
+    <div class="article__footer">
+      <a href="/posts/{{@key}}.html" class="highlighted">Czytaj</a>
     </div>
-  </div>
-</section>
+  </article>
+{{/each}}
