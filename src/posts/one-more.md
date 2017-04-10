@@ -1,5 +1,4 @@
 ---
-layout: blog-layout
 title: One more
 description: One more post to test if this works
 date: 2017-04-08T18:46:50.856Z

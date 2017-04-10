@@ -29,6 +29,7 @@ var marked = require('marked');
 var rename = require("gulp-rename");
 var remark = require("gulp-remark");
 var remarkHtml = require("remark-html");
+var inject = require('gulp-inject-string');
 
 
 var devBuild = (process.env.NODE_ENV !== 'production');
@@ -160,7 +161,8 @@ gulp.task('save-posts-data', ['convert-to-html'], function() {
 
 gulp.task('convert-to-html', function() {
   return gulp.src(folder.src + 'posts/**/*.md')
-  .pipe(remark().use(remarkHtml))
+  .pipe(inject.after('\'\n---', '\n{{> post-meta}}\n{{#markdown}}\n'))
+  .pipe(inject.append('\n{{/markdown}}\n</article>'))
   .pipe(rename({
     extname: ".html"
   }))
