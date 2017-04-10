@@ -129,8 +129,12 @@ gulp.task('css', ['images', 'fonts'], function() {
 
 });
 
-gulp.task('clean:dist', function() {
+gulp.task('clean:build', function() {
   return del.sync('build');
+});
+
+gulp.task('clean:posts', function() {
+  return del.sync(folder.src + 'html/pages/posts');
 });
 
 gulp.task('fonts', function() {
@@ -178,9 +182,9 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function() {
-  runSequence('clean:dist', ['run', 'watch', 'serve']);
+  runSequence('clean:build', 'clean:posts', ['run', 'watch', 'serve']);
 });
 
 gulp.task('build', function() {
-  runSequence('clean:dist', 'run');
+  runSequence('clean:build', 'clean:posts', 'run');
 });
