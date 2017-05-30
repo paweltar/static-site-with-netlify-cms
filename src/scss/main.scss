@@ -1,23 +1,8 @@
 @import "settings";
+@import "grid";
 @import "old-screen-effect";
 @import "pages/blog/blog-grid";
 @import "pages/blog/blog";
-
-.text-container {
-  lost-column: 3/4;
-  border: 2px solid $color-primary;
-  padding: 20px;
-  box-shadow: 10px 10px;
-}
-
-.section--info-box {
-  lost-row: 2/3;
-}
-
-.section--footer {
-  text-align: center;
-  lost-row: 1/3;
-}
 
 .divider {
   border-color: $color-primary;
@@ -35,14 +20,6 @@
     background: lighten($color-primary, 20%);
     box-shadow: inset 0px 0px 10px 2px lighten($color-primary, 0%),
                       0px 0px 10px 2px lighten($color-primary, 0%);
-  }
-}
-
-.grid--vertical {
-  height: 100vh;
-  lost-center: 980px;
-  > section {
-    lost-align: center;
   }
 }
 
