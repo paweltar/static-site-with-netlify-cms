@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#121010" />
     <title>Paweł Targoński</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
     <link rel="stylesheet" href="{{root}}css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   </head>
   <body>
-    <nav class="top-navigation">
-      <a href="/" class="highlighted">Strona Główna</a>
-      <a href="/blog.html" class="highlighted">Wszystkie Wpisy</a>
-    </nav>
-    <section class="container">
-      <div class="blog-contents">
-          {{> body}}
-      </div>
-    </section>
+    <div class="main-wrapper">
+      {{> navigation}}
+      {{> body}}
+    </div>
     {{> scripts}}
   </body>
 </html>

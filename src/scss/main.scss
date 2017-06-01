@@ -1,30 +1,28 @@
 @import "settings";
-@import "grid";
 @import "vendor/jquery-fullpage";
-@import "old-screen-effect";
-@import "pages/blog/blog-grid";
-@import "pages/blog/blog";
 
-.divider {
-  border-color: $color-primary;
-  margin: 20px 0;
+.active {
+ color: #19A974;
 }
 
-.highlighted {
-  text-decoration: none;
-  background-color: $color-primary;
-  color: $screen-background;
-  line-height: 1.2rem;
-  padding: 5px;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    background: lighten($color-primary, 20%);
-    box-shadow: inset 0px 0px 10px 2px lighten($color-primary, 0%),
-                      0px 0px 10px 2px lighten($color-primary, 0%);
-  }
+.slide {
+ img {
+  max-height: 620px;
+ }
 }
 
-a {
-  color: $color-primary;
-  text-decoration: none;
+.section--first {
+ background: linear-gradient( rgba(0, 0, 0, 0.5),
+ rgba(0, 0, 0, 0.5)), url('/images/notebook-computer-chill-relax.jpg') no-repeat center center fixed;
+ background-size: cover;
+}
+
+.section--second {
+ background-image: linear-gradient( rgba(0, 0, 0, 0.7),
+ rgba(0, 0, 0, 0.7)), url('/images/section2bg.jpg');
+ background-size: cover;
+}
+
+.link, .link:active, .link:focus {
+  outline: none;
 }
