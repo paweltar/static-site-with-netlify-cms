@@ -39,9 +39,9 @@ var folder = {
     build: 'build/'
 };
 
-marked.setOptions({
-  smartypants: true
-});
+// marked.setOptions({
+//   smartypants: true
+// });
 
 gulp.task('serve', ['css'], function() {
     browserSync.init({
@@ -54,7 +54,7 @@ gulp.task('images', function() {
     return gulp.src(folder.src + 'images/**/*').pipe(newer(out)).pipe(imagemin({optimizationLevel: 5})).pipe(gulp.dest(out));
 });
 
-gulp.task('html', ['images', 'save-posts-data'], function() {
+gulp.task('html', ['images'], function() {
     var out = folder.build + '/';
 
     var page = gulp.src(folder.src + 'html/pages/**/*.html').pipe(panini({
@@ -105,7 +105,7 @@ gulp.task('css', ['images', 'fonts'], function() {
       hosted: [folder.src + 'fonts']
     }),
     nipponColor,
-    lost(),
+    // lost(),
     rucksack,
     mqpacker,
     cssnext({ browsers: ['last 2 versions', '> 2%'] })
@@ -134,9 +134,9 @@ gulp.task('clean:build', function() {
   return del.sync('build');
 });
 
-gulp.task('clean:posts', function() {
-  return del.sync(folder.src + 'html/pages/posts');
-});
+// gulp.task('clean:posts', function() {
+//   return del.sync(folder.src + 'html/pages/posts');
+// });
 
 gulp.task('fonts', function() {
   return gulp.src(folder.src + 'fonts/**/*')
@@ -148,26 +148,26 @@ gulp.task('static', function() {
   .pipe(gulp.dest(folder.build))
 });
 
-gulp.task('save-posts-data', ['convert-to-html'], function() {
-  return gulp.src(folder.src + 'posts/**/*.md')
-  .pipe(gutil.buffer())
-  .pipe(markdownToJSON(marked, 'posts.json', (data, file) => {
-    delete data.body;
-    data.path = file.path;
-    return data;
-  }))
-  .pipe(gulp.dest(folder.src + 'data'))
-});
+// gulp.task('save-posts-data', ['convert-to-html'], function() {
+//   return gulp.src(folder.src + 'posts/**/*.md')
+//   .pipe(gutil.buffer())
+//   .pipe(markdownToJSON(marked, 'posts.json', (data, file) => {
+//     delete data.body;
+//     data.path = file.path;
+//     return data;
+//   }))
+//   .pipe(gulp.dest(folder.src + 'data'))
+// });
 
-gulp.task('convert-to-html', function() {
-  return gulp.src(folder.src + 'posts/**/*.md')
-  .pipe(inject.after('\'\n---', '\n{{> post-meta}}\n{{#markdown}}\n'))
-  .pipe(inject.append('\n{{/markdown}}\n</article>'))
-  .pipe(rename({
-    extname: ".html"
-  }))
-  .pipe(gulp.dest(folder.src + 'html/pages/posts'))
-})
+// gulp.task('convert-to-html', function() {
+//   return gulp.src(folder.src + 'posts/**/*.md')
+//   .pipe(inject.after('\'\n---', '\n{{> post-meta}}\n{{#markdown}}\n'))
+//   .pipe(inject.append('\n{{/markdown}}\n</article>'))
+//   .pipe(rename({
+//     extname: ".html"
+//   }))
+//   .pipe(gulp.dest(folder.src + 'html/pages/posts'))
+// })
 
 gulp.task('run', ['html', 'css', 'js', 'fonts', 'static']);
 
@@ -184,9 +184,9 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function() {
-  runSequence('clean:build', 'clean:posts', ['run', 'watch', 'serve']);
+  runSequence('clean:build', ['run', 'watch', 'serve']);
 });
 
 gulp.task('build', function() {
-  runSequence('clean:build', 'clean:posts', 'run');
+  runSequence('clean:build', 'run');
 });

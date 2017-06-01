@@ -10,6 +10,11 @@ $(document).ready(function() {
 		menu: "#menu",
 		anchors: ["home", "portfolio", "contact"],
 		scrollOverflow: true,
-		touchSensitivity: 15
+		touchSensitivity: 15,
+		fitToSection: false,
+		paddingTop: '100px',
+		paddingBottom: '10px',
+		responsiveWidth: '900px'
+		// autoScrolling: false
 	});
 });

@@ -228,7 +228,7 @@ html.fp-enabled,
   color: #19A974; }
 
 .slide img {
-  max-height: 620px; }
+  max-height: 75vh; }
 
 .section--first {
   background: -webkit-linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/images/notebook-computer-chill-relax.jpg") no-repeat center center fixed;
